@@ -1,6 +1,6 @@
 package chapter1;
 
-public class exercise8 {
+public class Exercise8 {
     public static void main(String[] args) {
         double radius = 5.5;
         double perimeter = 2 * radius * Math.PI;
