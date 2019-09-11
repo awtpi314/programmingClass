@@ -3,18 +3,18 @@ package chapter2;
 import java.util.Scanner;
 
 /**
- * exercise14
- * Alexander Taylor
- * TPS Java
- * Mr. Yonts
+ * <h1>Exercise14</h1>
+ * <p>Alexander Taylor</p>
+ * <p>TPS Java</p>
+ * <p>Mr. Yonts</P>
  *
- * This class calculates BMI based on height and weight
- * The user is prompted for weight in pounds and height
+ * <p>This class calculates BMI based on height and weight.<p>
+ * <p>The user is prompted for weight in pounds and height
  * in inches. The class then converts the pounds and inches
  * to kilograms and meters. The BMI is then calculated and
- * output to the console.
+ * output to the console.</p>
  */
-public class exercise14 {
+public class Exercise14 {
     public static void main(String[] args) {
         // Declare the input scanner
         Scanner sc = new Scanner(System.in);
@@ -63,3 +63,4 @@ public class exercise14 {
         System.out.printf("BMI is %.4f", (kilograms / Math.pow(meters, 2)));
     }
 }
+
