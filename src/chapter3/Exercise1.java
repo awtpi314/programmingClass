@@ -12,6 +12,7 @@ public class Exercise1 {
 
         System.out.print("Enter a, b, c: ");
         String[] s = sc.nextLine().split(" ");
+        sc.close();
         for (int i = 0; i < 3; i++) {
             try {
                 constants[i] = Double.parseDouble(s[i]);
