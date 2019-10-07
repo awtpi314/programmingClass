@@ -7,7 +7,6 @@ public class Exercise1 {
         double[] constants = new double[3];
         double[] answers = new double[2];
         double discriminant;
-        int nanCount = 0;
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter a, b, c: ");
@@ -24,12 +23,12 @@ public class Exercise1 {
 
         discriminant = Math.sqrt(constants[1] * constants[1] - 4 * constants[0] * constants[2]);
         answers[0] = (-constants[1] + discriminant) / (2 * constants[0]);
-        answers[1] = (-constants[1] - discriminant) / (2 * constants[0]);
 
         if (discriminant > 0) {
+            answers[1] = (-constants[1] - discriminant) / (2 * constants[0]);
             System.out.printf("The equation has two roots: %f and %f\n", answers[0], answers[1]);
         } else if (discriminant == 0) {
-            System.out.printf("The equation has one root: %f\n", Double.isNaN(answers[0]) ? answers[1] : answers[0]);
+            System.out.printf("The equation has one root: %f\n", answers[0]);
         } else {
             System.out.println("The equation has no real roots.");
         }
