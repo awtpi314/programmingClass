@@ -24,7 +24,6 @@ public class Exercise11 {
         // Make sure we have the proper number of coefficients
         if (coefficients.length < 6) {
             throw new IllegalArgumentException("There should be six coefficients. Exiting");
-            System.exit(1);
         }
 
         // The array of double coefficients
