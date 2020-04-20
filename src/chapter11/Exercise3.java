@@ -14,10 +14,10 @@ public class Exercise3 {
 }
 
 class Account {
-    private final int id;
-    private final LocalDate dateCreated;
-    private double balance;
-    private double rate;
+    protected final int id;
+    protected final LocalDate dateCreated;
+    protected double balance;
+    protected double rate;
 
     public Account(int i, double b, double r, LocalDate dC) {
         id = i;
@@ -50,6 +50,18 @@ class Account {
         return dateCreated;
     }
 
+    public void deposit(double money) {
+        balance += money;
+    }
+
+    public void withdraw(double money) throws Exception {
+        if (money > balance) {
+            throw new Exception("Not enough money in account.");
+        } else {
+            balance -= money;
+        }
+    }
+
     @Override
     public String toString() {
         return getClass().getSimpleName() + ": id=" + id + String.format(", balance=%.2f", balance) + ", rate=" + rate + "%, created=" + dateCreated.toString();
@@ -57,7 +69,7 @@ class Account {
 }
 
 class CheckingAccount extends Account {
-    private double overdraftLimit;
+    protected double overdraftLimit;
 
     public CheckingAccount(int i, double d, double r, LocalDate dC, double ovrL) {
         super(i, d, r, dC);
@@ -73,13 +85,22 @@ class CheckingAccount extends Account {
     }
 
     @Override
+    public void withdraw(double money) throws Exception {
+        if (money > super.balance + overdraftLimit) {
+            throw new Exception("Not enough money in account.");
+        } else {
+            balance -= money;
+        }
+    }
+
+    @Override
     public String toString() {
         return super.toString() + String.format(", overdraft=%.2f", overdraftLimit);
     }
 }
 
 class SavingsAccount extends Account {
-    private double available;
+    protected double available;
 
     public SavingsAccount(int i, double d, double r, LocalDate dC, double a) {
         super(i, d, r, dC);
@@ -92,6 +113,16 @@ class SavingsAccount extends Account {
 
     public void setAvailable(double available) {
         this.available = available;
+    }
+
+    @Override
+    public void withdraw(double money) throws Exception {
+        if (money > available) {
+            throw new Exception("Not enough money in account.");
+        } else {
+            available -= money;
+            balance -= money;
+        }
     }
 
     @Override
