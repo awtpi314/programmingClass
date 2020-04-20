@@ -52,7 +52,7 @@ class Account {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + ": id=" + id + ", balance=" + balance + ", rate=" + rate + "%, created=" + dateCreated.toString();
+        return getClass().getSimpleName() + ": id=" + id + String.format(", balance=%.2f", balance) + ", rate=" + rate + "%, created=" + dateCreated.toString();
     }
 }
 
@@ -74,7 +74,7 @@ class CheckingAccount extends Account {
 
     @Override
     public String toString() {
-        return super.toString() + ", overdraft=" + overdraftLimit;
+        return super.toString() + String.format(", overdraft=%.2f", overdraftLimit);
     }
 }
 
@@ -96,6 +96,6 @@ class SavingsAccount extends Account {
 
     @Override
     public String toString() {
-        return super.toString() + ", available=" + available;
+        return super.toString() + String.format(", available=%.2f", available);
     }
 }
